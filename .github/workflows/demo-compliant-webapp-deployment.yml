@@ -1,5 +1,8 @@
 name: Web App Deployemnt - Compliant
-on: [push]
+on:
+  issues:
+    types: [pinned, unpinned]
+
 
 jobs:
   build:
