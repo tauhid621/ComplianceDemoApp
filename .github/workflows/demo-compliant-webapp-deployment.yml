@@ -1,38 +1,38 @@
-name: Test AzPacDev Compliant
+name: Web App Deployemnt - Compliant
 on:
   issues:
     types: [pinned, unpinned]
+
 
 jobs:
   build:
     name: Web App Deployemnt - Compliant
     runs-on: ubuntu-latest
-    steps:      
+    steps:
       - name: Check out current repository
         uses: actions/checkout@v2
         with:
           path: workflow
-          
-      - name: Login via Az module
+
+      - name: Login to Azure
         continue-on-error: true
         uses: azure/login@v1.1
         with:
          creds: ${{secrets.AZ_SPN_CREDS}}
          enable-AzPSSession: true
-      
-      - name: Update WebApp configuration
-        run: ./workflow/.github/workflows/compliantConfigScript.sh
 
-      - name: Deploy to WebAPP
+      - name: Update WebApp configuration - Enable Logging
+        run: bash ./workflow/.github/workflows/scripts/updateAppConfig.sh enableLogging.json subscriptions/c00d16c7-6c1f-4c03-9be1-6934a4c49682/resourceGroups/az-pac-dev/providers/Microsoft.Web/sites/pacCompliant
+
+      - name: Deploy to WebApp
         uses: azure/webapps-deploy@v2
         with:
           app-name: pacCompliant
           publish-profile: ${{ secrets.PACCOMPLIANT_PUBLISHPROFILE }}
           package: ./workflow/nodeApp/
       
-      - name: Check resource compliance
+      - name: Check resource compliance post deployment
         uses: ajinkya599/AzPac@azpac-initial
         with:
           scopes: |
             /subscriptions/c00d16c7-6c1f-4c03-9be1-6934a4c49682/resourceGroups/az-pac-dev/providers/Microsoft.Web/sites/pacCompliant
-          bearer-token: ${{ secrets.AZ_BEARER_TOKEN }}
