@@ -1,0 +1,44 @@
+name: Test AzPacDev Non Compliant
+on: [push]
+
+jobs:
+  build:
+    name: AzPac RG
+    runs-on: self-hosted
+    steps:      
+      - name: Check out current repository
+        uses: actions/checkout@v2
+        with:
+          path: workflow
+          
+      - name: Login via Az module
+        continue-on-error: true
+        uses: azure/login@v1.1
+        with:
+         creds: ${{secrets.AZ_SPN_CREDS}}
+         enable-AzPSSession: true
+        
+      # - name: Check resource compliance
+      #   uses: ./
+      #   with:
+      #     scopes: |
+      #       /subscriptions/c00d16c7-6c1f-4c03-9be1-6934a4c49682/resourceGroups/az-pac-dev/providers/Microsoft.Web/sites/azpactestwebapp
+      #     bearer-token: ${{ secrets.AZ_BEARER_TOKEN }}
+      #     poll-timeout: 20
+      
+      - name: Deploy configuration
+        run: ./workflow/.github/workflows/deployConfigScript.sh
+
+      - name: Deploy step
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: azpactestwebapp
+          publish-profile: ${{ secrets.AZPACTESTWEBAPP_PUBLISHPROFILE }}
+          package: ./workflow/nodeApp/
+      
+      # - name: Check resource compliance
+      #   uses: ./
+      #   with:
+      #     scopes: |
+      #       /subscriptions/c00d16c7-6c1f-4c03-9be1-6934a4c49682/resourceGroups/az-pac-dev/providers/Microsoft.Web/sites/azpactestwebapp
+      #     bearer-token: ${{ secrets.AZ_BEARER_TOKEN }}

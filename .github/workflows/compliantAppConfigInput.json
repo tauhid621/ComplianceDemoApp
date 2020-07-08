@@ -1,0 +1,7 @@
+{
+    "properties": {
+        "detailedErrorLoggingEnabled": true,
+        "httpLoggingEnabled": true,
+        "requestTracingEnabled": true
+    }
+}
