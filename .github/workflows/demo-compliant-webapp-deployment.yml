@@ -19,7 +19,7 @@ jobs:
          enable-AzPSSession: true
 
       - name: Update WebApp configuration - Enable Logging
-        run: ./workflow/.github/workflows/scripts/updateAppConfig.sh enableLogging.json
+        run: bash ./workflow/.github/workflows/scripts/updateAppConfig.sh enableLogging.json
 
       - name: Deploy to WebApp
         uses: azure/webapps-deploy@v2
