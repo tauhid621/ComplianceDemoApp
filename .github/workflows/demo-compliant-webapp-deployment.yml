@@ -2,8 +2,7 @@ name: Web App Deployemnt - Compliant
 on:
   issues:
     types: [pinned, unpinned]
-
-
+    
 jobs:
   build:
     name: Web App Deployemnt - Compliant
