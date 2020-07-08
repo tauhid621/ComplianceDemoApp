@@ -4,7 +4,7 @@ on: [push]
 jobs:
   build:
     name: AzPac RG
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:      
       - name: Check out current repository
         uses: actions/checkout@v2
