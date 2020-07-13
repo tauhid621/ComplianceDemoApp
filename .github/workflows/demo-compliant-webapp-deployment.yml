@@ -12,11 +12,9 @@ jobs:
           path: workflow
 
       - name: Login to Azure
-        continue-on-error: true
         uses: azure/login@v1.1
         with:
          creds: ${{secrets.AZ_SPN_CREDS}}
-         enable-AzPSSession: true
 
       - name: Update WebApp configuration - Enable Logging
         run: bash ./workflow/.github/workflows/scripts/updateAppConfig.sh enableLogging.json subscriptions/c00d16c7-6c1f-4c03-9be1-6934a4c49682/resourceGroups/az-pac-dev/providers/Microsoft.Web/sites/pacCompliant
