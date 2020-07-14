@@ -17,8 +17,8 @@ jobs:
          creds: ${{secrets.AZ_SPN_CREDS}}
       
       - name: Check resource compliance post deployment
-        uses: ajinkya599/AzPac@release-1.0.2
+        uses: ajinkya599/AzPac@testnew
         with:
           scopes: |
-            /subscriptions/c00d16c7-6c1f-4c03-9be1-6934a4c49682/resourceGroups/az-pac-demo/providers/Microsoft.Web/sites/security-policy-app-dev
+            /subscriptions/c00d16c7-6c1f-4c03-9be1-6934a4c49682/resourceGroups/az-pac-dev/providers/Microsoft.Web/sites/e2edemoapp
 
