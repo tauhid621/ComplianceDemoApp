@@ -15,19 +15,9 @@ jobs:
         uses: azure/login@v1.1
         with:
          creds: ${{secrets.AZ_SPN_CREDS}}
-
-      - name: Update WebApp configuration - Enable Logging
-        run: bash ./workflow/.github/workflows/scripts/updateAppConfig.sh enableLogging.json subscriptions/c00d16c7-6c1f-4c03-9be1-6934a4c49682/resourceGroups/az-pac-dev/providers/Microsoft.Web/sites/pacCompliant
-
-      - name: Deploy to WebApp
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: pacCompliant
-          publish-profile: ${{ secrets.PACCOMPLIANT_PUBLISHPROFILE }}
-          package: ./workflow/nodeApp/
       
       - name: Check resource compliance post deployment
-        uses: ajinkya599/AzPac@remediationsteps
+        uses: ajinkya599/AzPac@test
         with:
           scopes: |
-            /subscriptions/c00d16c7-6c1f-4c03-9be1-6934a4c49682/resourceGroups/az-pac-dev/providers/Microsoft.Web/sites/pacCompliant
+            /subscriptions/c00d16c7-6c1f-4c03-9be1-6934a4c49682/resourceGroups/az-pac-demo/providers/Microsoft.Web/sites/security-policy-app-prod
