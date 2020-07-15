@@ -22,4 +22,5 @@ jobs:
           scopes: |
             /subscriptions/c00d16c7-6c1f-4c03-9be1-6934a4c49682/resourceGroups/az-pac-dev/providers/Microsoft.Web/sites/e2egoapp
             
+            
 
