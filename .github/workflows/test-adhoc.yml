@@ -1,0 +1,23 @@
+name: Test MSI
+on: [push]
+
+jobs:
+  build:
+    name: Test MSI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out current repository
+        uses: actions/checkout@v2
+        with:
+          path: workflow
+
+      - name: Login to Azure
+        uses: azure/login@v1.1
+        with:
+         creds: ${{secrets.AZ_SPN_CREDS}}
+      
+      - name: policy-compliance-scan
+        uses: Azure/policy-compliance-scan@v0
+        with:
+          scopes: |
+            /subscriptions/c00d16c7-6c1f-4c03-9be1-6934a4c49682/resourcegroups/raghaves-rg
