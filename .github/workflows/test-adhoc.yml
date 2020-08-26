@@ -1,5 +1,8 @@
 name: Test MSI
-on: [push]
+on:
+  push:
+      branches: 
+        - test
 
 jobs:
   build:
