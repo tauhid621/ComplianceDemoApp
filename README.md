@@ -1,6 +1,6 @@
 # Compliance Scan Action
 
-A GitHub action to trigger an on-demand scan of Azure Policy for a given scope.
+A GitHub action to trigger an on-demand scan of Azure Policy for a given scopes.
 
 ## Demo Script:
 
