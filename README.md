@@ -11,7 +11,7 @@ This action can be used for 3 scenarios:
 
 ## Developer scenario:
 ### compliant-webapp-deployment
-This deployment workflow is triggered on code push to branch. It deploys the node app to Azure Web APP server. There are no non-compliance changes made as a part of this deployment and hence the post-deployment compliance scan will be successful.
+This deployment workflow is triggered on code push to branch. It deploys the node app to Azure Web APP server. There are no non-compliance changes made as a part of this deployment and hence the post-deployment compliance scan will be successful. 
 
 
 ### noncompliant-webapp-deployment
