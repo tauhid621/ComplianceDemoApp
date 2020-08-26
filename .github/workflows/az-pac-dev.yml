@@ -1,10 +1,10 @@
-name: Web App Deployemnt - Compliant
+name: Web App Deployemnt
 on:
   push:
     branches: 
       - master
     paths:
-      - .github/workflows/demo-compliant-webapp-deployment.yml
+      - .github/workflows/az-pac-dev.yml
 
 jobs:
   build:
@@ -25,8 +25,4 @@ jobs:
         uses: Azure/policy-compliance-scan@v0
         with:
           scopes: |
-            /subscriptions/c00d16c7-6c1f-4c03-9be1-6934a4c49682/resourceGroups/az-pac-demo/providers/Microsoft.Web/sites/PolicyComplianceScanDemoAPP
-            
-            
-
-
+            /subscriptions/c00d16c7-6c1f-4c03-9be1-6934a4c49682/resourcegroups/az-pac-dev/providers/Microsoft.Web/sites/pacDempApp
