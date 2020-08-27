@@ -1,4 +1,4 @@
-name: Web App Deployemnt az-pac-de
+name: Web App Deployemnt az-pac-dev
 on:
   push:
     branches: 
